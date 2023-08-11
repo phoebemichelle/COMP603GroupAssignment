@@ -9,5 +9,7 @@ package virtualpetgame;
  * @author alekh
  */
 public class Dog {
-    
+    public static void main(String[] args) {
+        
+    }
 }
