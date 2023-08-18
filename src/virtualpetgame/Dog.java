@@ -9,64 +9,14 @@ package virtualpetgame;
  * @author alekh
  */
 import java.util.Scanner;
-public class Dog 
+public abstract class Dog extends Animal
 {
     Scanner in = new Scanner(System.in);
-    
-    private String name;
-    private int age;
-    private int fun;
-    private int energy;
-    private int bladder;
-    
-    public String getName()
+    Dog(String name)
     {
-        return this.name;
+        super(name);
     }
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-    public int getAge()
-    {
-        return this.age;
-    }
-    public void setAge(int age)
-    {
-        this.age = age;
-    }
-    public int getFun()
-    {
-        return this.fun;
-    }
-    public void setFun(int fun)
-    {
-        this.fun = fun;
-    }
-    public int getEnergy()
-    {
-        return this.energy;
-    }
-    public void setEnergy(int energy)
-    {
-        this.energy = energy;
-    }
-    public int getBladder()
-    {
-        return this.bladder;
-    }
-    public void setBladder(int bladder)
-    {
-        this.bladder = bladder;
-    }
-    public Dog(String name, int age)
-    {
-        this.name = name;
-        this.age = age;
-        this.fun = 0;
-        this.energy = 10;
-        this.bladder = 0;
-    }
+    @Override
     public void feed()
     {
         int food;
@@ -81,24 +31,24 @@ public class Dog
         switch(food)
         {
             case 1:
-                this.energy += 8;
-                System.out.println("Thank you!! I would like a drink now...");
+                setEnergy(getEnergy() + 80);
+                System.out.println("Thank you!! "+getName()+" would like a drink now...");
                 break;
             case 2:
-                this.energy += 9;
-                System.out.println("Thank you!! Can we play now?");
+                setEnergy(getEnergy() + 90);
+                System.out.println("Thank you!! "+getName()+" wants to play now...");
                 break;
             case 3:
-                this.energy +=5;
-                System.out.println("I want more food...");
+                setEnergy(getEnergy() + 50);
+                System.out.println(getName()+" wants more food...");
                 break;
             case 4:
-                this.energy += 7;
-                System.out.println("I want more food...");
+                setEnergy(getEnergy() + 70);
+                System.out.println(getName()+" wants more food...");
                 break;
             case 5:
-                this.energy += 10;
-                System.out.println("Thank you!! I'm full now...");
+                setEnergy(getEnergy() + 100);
+                System.out.println("Thank you!! "+getName()+" is full now...");
                 break;
             default:
                 System.out.println("Sorry! Food not in menu...");
@@ -112,22 +62,23 @@ public class Dog
         switch(drink)
         {
             case 1:
-                this.energy += 3;
-                this.bladder += 1;
+                setEnergy(getEnergy() + 30);
+                setBladder(getBladder() + 10);
                 break;
             case 2:
-                this.energy += 1;
-                this.bladder += 3;
+                setEnergy(getEnergy() + 10);
+                setBladder(getBladder() + 30);
                 break;
             case 3:
-                this.energy += 2;
-                this.bladder += 2;
+                setEnergy(getEnergy() + 20);
+                setBladder(getBladder() + 20);
                 break;
             default:
                 System.out.println("Invalid drink choice!!");
                 break;
         }
     }
+    @Override
     public void bathe()
     {
         int options;
@@ -139,20 +90,21 @@ public class Dog
         switch(options)
         {
             case 1:
-                this.fun += 4;
-                System.out.println("That was amazing!! Thank you for the bath");
+                setFun(getFun() + 40);
+                System.out.println("That was amazing!!"+getName()+" says Thank you for the bath");
                 break;
             case 2:
-                System.out.println("Ooohh!!! That was cold!");
+                System.out.println("Ooohh!!! "+getName()+" says that was cold!");
                 break;
             case 3:
-                System.out.println("Mmmmm... Can I go to bed now?");
+                System.out.println("Mmmmm... Can "+getName()+" go to bed now?");
                 break;
             default:
                 System.out.println("Bath option not found!");
                 break;
         }
     }
+    @Override
     public void play()
     {
         int options;
@@ -166,64 +118,52 @@ public class Dog
         switch(options)
         {
             case 1:
-                this.fun += 10;
-                this.energy = 3;
-                System.out.println("That was really fun!!!");
+                setFun(getFun() + 10);
+                setEnergy(getEnergy() + 30);
+                System.out.println(getName()+" loved fetching the stick!!!");
                 break;
             case 2:
-                this.fun += 9;
-                this.energy = 5;
-                System.out.println("That was really fun!!!");
+                setFun(getFun() + 90);
+                setEnergy(getEnergy() + 50);
+                System.out.println(getName()+" enjoyed the tug-of-war!!");
                 break;
             case 3:
-                this.fun += 10;
-                this.energy = 3;
-                System.out.println("That was really fun!!!");
+                setFun(getFun() + 100);
+                setEnergy(getEnergy() + 30);
+                System.out.println(getName()+" loved catching the frisbee!");
                 break;
             case 4: 
-                this.fun += 8;
-                this.energy = 4;
-                System.out.println("That was really fun!!!");
+                setFun(getFun() + 80);
+                setEnergy(getEnergy() + 40);
+                System.out.println(getName()+" loved palying with the water!!!");
                 break;
             case 5: 
-                this.fun += 9;
-                this.energy = 4;
-                System.out.println("That was really fun!!!");
+                setFun(getFun() + 90);
+                setEnergy(getEnergy() + 40);
+                System.out.println(getName()+" loves paooping the bubbles!!!!");
                 break;
             default: 
                 System.out.println("Invalid game choice!!");
                 break;
         }
     }
+    @Override
     public void walk()
     {
-        this.energy = 3;
-        this.fun = 9;
-        System.out.println("That was refreshing!!");
+        setEnergy(getEnergy() + 30);
+        setFun(getFun() + 90);
+        System.out.println(getName()+" thinks that was refreshing!!");
     }
+    @Override
     public void sleep()
     {
-        this.energy = 8;
-        System.out.println("I rested enough now... I want to play...");
+        setEnergy(getEnergy() + 80);
+        System.out.println(getName()+" rested enough now..."+getName()+" wants to play...");
     }
-    public void toilet()
+    @Override
+    public void bladder()
     {
-        this.bladder = 0;
-        System.out.println("I feel much better now...");
-    }
-    public static void main(String[] args) 
-    {
-        Dog dog = new Dog("Fleetfoot", 1);
-        dog.feed();
-        dog.bathe();
-        dog.play();
-        dog.walk();
-        dog.sleep();
-        dog.toilet();
-        System.out.println("DOG'S NAME: "+dog.getName());
-        System.out.println("DOG'S AGE: "+dog.getAge());
-        System.out.println("FUN SCORE: "+dog.getFun());
-        System.out.println("ENERGY SCORE: "+dog.getEnergy());
-        System.out.println("BLADDER SCORE: "+dog.getBladder());
+        setBladder(getBladder() + 0);
+        System.out.println(getName()+" feels much better now...");
     }
 }
