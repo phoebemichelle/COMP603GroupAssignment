@@ -9,7 +9,7 @@ package virtualpetgame;
  * @author alekh
  */
 import java.util.Scanner;
-public abstract class Dog extends Animal
+public class Dog extends Animal
 {
     Scanner in = new Scanner(System.in);
     Dog(String name)
@@ -161,7 +161,7 @@ public abstract class Dog extends Animal
         System.out.println(getName()+" rested enough now..."+getName()+" wants to play...");
     }
     @Override
-    public void bladder()
+    public void potty()
     {
         setBladder(getBladder() + 0);
         System.out.println(getName()+" feels much better now...");

@@ -74,7 +74,7 @@ public abstract class Animal {
     
     //Print ArrayList options
     public void printOptions(List<String> options) {
-        System.out.println("Choose an option:");
+        System.out.println("\nChoose an option:");
         for(int i=0; i<options.size();i++) {
             System.out.println((i+1) + ". " + options.get(i));
         }
@@ -86,7 +86,7 @@ public abstract class Animal {
     public abstract void play();
     public abstract void walk();
     public abstract void sleep();
-    public abstract void bladder();
+    public abstract void potty();
    
    //Print the needs status
     @Override

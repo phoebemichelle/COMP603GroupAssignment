@@ -6,7 +6,7 @@ package virtualpetgame;
 
 /**
  *
- * @author phoeb
+ * @author phoebe
  */
 import java.util.*;
 
@@ -53,9 +53,9 @@ public class Cat extends Animal {
         }
         
         List<String> drinkOptions = new ArrayList<>();
-        foodOptions.add("Water");
-        foodOptions.add("Milk");
-        printOptions(foodOptions);
+        drinkOptions.add("Water");
+        drinkOptions.add("Milk");
+        printOptions(drinkOptions);
 
         int drink = scanner.nextInt();
         switch(drink)
@@ -138,7 +138,7 @@ public class Cat extends Animal {
     }
     
     @Override
-    public void bladder(){
+    public void potty(){
         setBladder(getBladder() + 60);
         setHygiene(getHygiene()-20);
         System.out.println("Phew, that was close. " + getName()+" really had to go!");
