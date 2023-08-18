@@ -21,7 +21,37 @@ public class Cat extends Animal {
     
     @Override
     public void feed(){
+        List<String> foodOptions = new ArrayList<>();
+        foodOptions.add("Fish");
+        foodOptions.add("Chicken");
+        foodOptions.add("Cat food");
+        foodOptions.add("Cheese");
         
+        printOptions(foodOptions);
+        int food = scanner.nextInt();
+        switch(food)
+        {
+            case 1:
+                setEnergy(getEnergy()+60);
+                System.out.println("Meow! " + getName() + " loves fish!");
+                break;
+            case 2:
+                setEnergy(getEnergy()+50);
+                System.out.println(getName() + " enjoyed that.");
+                break;
+            case 3:
+                setEnergy(getEnergy()+30);
+                System.out.println(getName() + " is bored of cat food!");
+                break;
+            case 4:
+                setEnergy(getEnergy()+10);
+                System.out.println(getName() + " wants more food...");
+                break;
+            default:
+                System.out.println("Sorry! Food not in menu...");
+                break;
+        }
+
     }
     
     @Override
