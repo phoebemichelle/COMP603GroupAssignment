@@ -26,8 +26,8 @@ public class Cat extends Animal {
         foodOptions.add("Chicken");
         foodOptions.add("Cat food");
         foodOptions.add("Cheese");
-        
         printOptions(foodOptions);
+        
         int food = scanner.nextInt();
         switch(food)
         {
@@ -51,7 +51,29 @@ public class Cat extends Animal {
                 System.out.println("Sorry! Food not in menu...");
                 break;
         }
+        
+        List<String> drinkOptions = new ArrayList<>();
+        foodOptions.add("Water");
+        foodOptions.add("Milk");
+        printOptions(foodOptions);
 
+        int drink = scanner.nextInt();
+        switch(drink)
+        {
+            case 1:
+                setEnergy(getEnergy()+20);
+                setBladder(getBladder()-20);
+                System.out.println(getName() + " feels replenished.");
+                break;
+            case 2:
+                setEnergy(getEnergy()+30);
+                setBladder(getBladder()-30);
+                System.out.println(getName() + " loves milk.");
+                break;
+            default:
+                System.out.println("Sorry! Food not in menu...");
+                break;
+        }
     }
     
     @Override
