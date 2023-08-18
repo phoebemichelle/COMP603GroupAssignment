@@ -8,6 +8,8 @@ package virtualpetgame;
  *
  * @author phoebe
  */
+import java.util.List;
+
 public abstract class Animal {
     private String name;
     private int hunger;
@@ -68,6 +70,14 @@ public abstract class Animal {
 
     public void setHygiene(int hygiene) {
         this.hygiene = Math.min(Math.max(hygiene, 0), 100);
+    }
+    
+    //Print ArrayList options
+    public void printOptions(List<String> options) {
+        System.out.println("Choose an option:");
+        for(int i=0; i<options.size();i++) {
+            System.out.println((i+1) + ". " + options.get(i));
+        }
     }
     
     //Abstract functions to be implemented in subclasses
