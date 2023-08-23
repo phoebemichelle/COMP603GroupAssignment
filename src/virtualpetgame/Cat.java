@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package virtualpetgame;
 
 /**
@@ -11,14 +7,13 @@ package virtualpetgame;
 import java.util.*;
 
 public class Cat extends Animal {
-    private Scanner scanner;
     
     //Constructor
     public Cat(String name){
         super(name);
-        scanner = new Scanner(System.in);
     }
     
+    //Implement feed method in Cat class
     @Override
     public void feed(){
         List<String> foodOptions = new ArrayList<>();
@@ -28,7 +23,7 @@ public class Cat extends Animal {
         foodOptions.add("Cheese");
         printOptions(foodOptions);
         
-        int food = scanner.nextInt();
+        int food = InputValidator.getUserChoice("Enter a choice: ", 1, 4);
         switch(food)
         {
             case 1:
@@ -44,41 +39,23 @@ public class Cat extends Animal {
                 System.out.println(getName() + " is bored of cat food!");
                 break;
             case 4:
-                setEnergy(getEnergy()+10);
-                System.out.println(getName() + " wants more food...");
-                break;
-            default:
-                System.out.println("Sorry! Food not in menu...");
-                break;
-        }
-        
-        List<String> drinkOptions = new ArrayList<>();
-        drinkOptions.add("Water");
-        drinkOptions.add("Milk");
-        printOptions(drinkOptions);
-
-        int drink = scanner.nextInt();
-        switch(drink)
-        {
-            case 1:
                 setEnergy(getEnergy()+20);
-                setBladder(getBladder()-20);
-                System.out.println(getName() + " feels replenished.");
-                break;
-            case 2:
-                setEnergy(getEnergy()+30);
-                setBladder(getBladder()-30);
-                System.out.println(getName() + " loves milk.");
-                break;
-            default:
-                System.out.println("Sorry! Drink not in menu...");
+                System.out.println(getName() + " wants more food...");
                 break;
         }
     }
     
     @Override
+    public void fillWaterBowl()
+    {
+        setBladder(getBladder() - 30);
+        setThirst(getBladder() + 50);
+        System.out.println("Water bowl refilled! " + getName() + " is staying hydrated!");
+    }
+    
+    @Override
     public void bathe(){
-        setHygiene(getHygiene()+50);
+        setHygiene(getHygiene()+70);
         System.out.println(getName() + " smells much better now!");
     }
     
@@ -91,7 +68,7 @@ public class Cat extends Animal {
         playOptions.add("Brush");
         printOptions(playOptions);
         
-        int play = scanner.nextInt();
+        int play = InputValidator.getUserChoice("Enter a choice: ", 1, 4);
         switch(play)
         {
             case 1:
@@ -102,11 +79,13 @@ public class Cat extends Animal {
             case 2:
                 setFun(getFun()+60);
                 setEnergy(getEnergy()-30);
+                setHunger(getHunger() - 20);
                 System.out.println("Squeak, squeak! " + getName() + " had so much fun!");
                 break;
             case 3:
                 setFun(getFun()+40);
                 setEnergy(getEnergy()-20);
+                setHunger(getHunger() - 10);
                 System.out.println(getName() + " was so focused!");
                 break;
             case 4:
@@ -115,23 +94,21 @@ public class Cat extends Animal {
                 setEnergy(getEnergy()-10);
                 System.out.println(getName() + " now looks more cute!!");
                 break;
-            default:
-                System.out.println("Invalid option!");
-                break;
         }
     }
     
     @Override
     public void walk(){
         setEnergy(getEnergy()-40);
-        setHygiene(getHygiene()-20);
+        setHygiene(getHygiene()-40);
         setFun(getFun()+10);
-        System.out.println(getName() + " doesn't really like walks!");
+        setHunger(getHunger() - 30);
+        System.out.println(getName() + " doesn't really enjoy walks!");
     }
     
     @Override
     public void sleep(){
-        setEnergy(getEnergy()+60);
+        setEnergy(getEnergy()+80);
         setHunger(getHunger()-10);
         setBladder(getBladder()-10);
         System.out.println("Zzzzzzzz");

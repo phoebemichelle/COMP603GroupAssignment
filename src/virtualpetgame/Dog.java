@@ -1,169 +1,153 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package virtualpetgame;
 
 /**
  *
  * @author alekh
  */
-import java.util.Scanner;
+import java.util.*;
+
 public class Dog extends Animal
 {
-    Scanner in = new Scanner(System.in);
-    Dog(String name)
+    public Dog(String name)
     {
         super(name);
     }
+    
     @Override
     public void feed()
     {
-        int food;
-        int drink;
-        System.out.println("What would you like to feed your pet?");
-        System.out.println("1. Fruit"); //energy score: 8
-        System.out.println("2. Veggie"); //energy score: 9
-        System.out.println("3. Cheese"); //energy score: 5
-        System.out.println("4. Eggs"); //energy score: 7
-        System.out.println("5. Meat"); //energy score: 10
-        food = in.nextInt();
+        List<String> foodOptions = new ArrayList<>();
+        foodOptions.add("Fruit"); //energy score: 30
+        foodOptions.add("Veggie"); //energy score: 10
+        foodOptions.add("Cheese"); //energy score: 20
+        foodOptions.add("Eggs"); //energy score: 40
+        foodOptions.add("Meat"); //energy score: 80
+        printOptions(foodOptions);
+        
+        int food = InputValidator.getUserChoice("Enter a choice: ", 1, 5);
         switch(food)
         {
             case 1:
-                setEnergy(getEnergy() + 80);
-                System.out.println("Thank you!! "+getName()+" would like a drink now...");
-                break;
-            case 2:
-                setEnergy(getEnergy() + 90);
-                System.out.println("Thank you!! "+getName()+" wants to play now...");
-                break;
-            case 3:
-                setEnergy(getEnergy() + 50);
-                System.out.println(getName()+" wants more food...");
-                break;
-            case 4:
-                setEnergy(getEnergy() + 70);
-                System.out.println(getName()+" wants more food...");
-                break;
-            case 5:
-                setEnergy(getEnergy() + 100);
-                System.out.println("Thank you!! "+getName()+" is full now...");
-                break;
-            default:
-                System.out.println("Sorry! Food not in menu...");
-                break;
-        }
-        System.out.println("What drink would you like to give your pet?");
-        System.out.println("1. Milk"); //energy score: 3 / bladder score: 1
-        System.out.println("2. Water"); //energy score: 1 / bladder score: 3
-        System.out.println("3. Juice"); //energy score: 2 / bladder score: 2
-        drink = in.nextInt();
-        switch(drink)
-        {
-            case 1:
                 setEnergy(getEnergy() + 30);
-                setBladder(getBladder() + 10);
+                System.out.println(getName()+" feels refreshed!");
                 break;
             case 2:
                 setEnergy(getEnergy() + 10);
-                setBladder(getBladder() + 30);
+                System.out.println(getName()+" doesn't really eat greens.");
                 break;
             case 3:
                 setEnergy(getEnergy() + 20);
-                setBladder(getBladder() + 20);
+                System.out.println(getName()+" wants more food...");
                 break;
-            default:
-                System.out.println("Invalid drink choice!!");
+            case 4:
+                setEnergy(getEnergy() + 40);
+                System.out.println(getName()+" wants more!");
+                break;
+            case 5:
+                setEnergy(getEnergy() + 80);
+                System.out.println("Woof!! "+getName()+" is full now...");
                 break;
         }
     }
+    
+    @Override
+    public void fillWaterBowl()
+    {
+        setBladder(getBladder() - 30);
+        setThirst(getBladder() + 50);
+        System.out.println("Water bowl refilled! " + getName() + " is staying hydrated!");
+    }
+    
     @Override
     public void bathe()
     {
-        int options;
-        System.out.println("Please choose from below: ");
-        System.out.println("1. Bubble Bath"); //only this would increase fun score: 4
-        System.out.println("2. Cold Shower");
-        System.out.println("3. Hot Shower");
-        options = in.nextInt();
-        switch(options)
-        {
-            case 1:
-                setFun(getFun() + 40);
-                System.out.println("That was amazing!!"+getName()+" says Thank you for the bath");
-                break;
-            case 2:
-                System.out.println("Ooohh!!! "+getName()+" says that was cold!");
-                break;
-            case 3:
-                System.out.println("Mmmmm... Can "+getName()+" go to bed now?");
-                break;
-            default:
-                System.out.println("Bath option not found!");
-                break;
-        }
+       setHygiene(getHygiene()+70);
+       System.out.println(getName() + " smells much better now!");
     }
+    
     @Override
     public void play()
     {
-        int options;
-        System.out.println("What would you like to play with your pet?");
-        System.out.println("1. Fetch"); //fun score: 10 / energy score: 3
-        System.out.println("2. Tug-of-War"); //fun score: 9 / energy score: 5
-        System.out.println("3. Frisbee"); //fun score: 10 / energy score: 3
-        System.out.println("4. Sprinkler"); //fun score: 8 / energy score: 4
-        System.out.println("5. Pop Bubbles"); //fun score: 9 / energy score: 4
-        options = in.nextInt();
+        List<String> playOptions = new ArrayList<>();
+        playOptions.add("Fetch");
+        playOptions.add("Tug-of-War");
+        playOptions.add("Frisbee");
+        playOptions.add("Sprinkler");
+        playOptions.add("Pop Bubbles");
+        playOptions.add("Pet");
+        printOptions(playOptions);
+        
+        int options = InputValidator.getUserChoice("Enter a choice: ", 1, 6);
         switch(options)
         {
             case 1:
-                setFun(getFun() + 10);
-                setEnergy(getEnergy() + 30);
-                System.out.println(getName()+" loved fetching the stick!!!");
+                setFun(getFun() + 70);
+                setEnergy(getEnergy() - 30);
+                setHygiene(getHygiene() - 50);
+                setHunger(getHunger() - 20);
+                System.out.println("Woof! "+getName()+" loves playing fetch!!!");
                 break;
             case 2:
-                setFun(getFun() + 90);
-                setEnergy(getEnergy() + 50);
-                System.out.println(getName()+" enjoyed the tug-of-war!!");
+                setFun(getFun() + 60);
+                setEnergy(getEnergy() - 50);
+                setHygiene(getHygiene() - 30);
+                setHunger(getHunger() - 30);
+                System.out.println("Grrr! " + getName()+" got really competitive!");
                 break;
             case 3:
-                setFun(getFun() + 100);
-                setEnergy(getEnergy() + 30);
-                System.out.println(getName()+" loved catching the frisbee!");
+                setFun(getFun() + 80);
+                setEnergy(getEnergy() - 40);
+                setHygiene(getHygiene() - 40);
+                setHunger(getHunger() - 20);
+                System.out.println(getName()+" loves catching frisbee!");
                 break;
             case 4: 
-                setFun(getFun() + 80);
-                setEnergy(getEnergy() + 40);
-                System.out.println(getName()+" loved palying with the water!!!");
+                setFun(getFun() + 70);
+                setEnergy(getEnergy() - 40);
+                setHygiene(getHygiene() - 80);
+                setHunger(getHunger() - 30);
+                System.out.println("Oh no!" + getName()+" had so much fun but " 
+                        + getName() + "is now all muddy");
                 break;
             case 5: 
                 setFun(getFun() + 90);
-                setEnergy(getEnergy() + 40);
-                System.out.println(getName()+" loves paooping the bubbles!!!!");
+                setEnergy(getEnergy() - 40);
+                setHygiene(getHygiene() - 20);
+                setHunger(getHunger() - 20);
+                System.out.println(getName()+" feels ecstatic from popping bubbles!");
                 break;
-            default: 
-                System.out.println("Invalid game choice!!");
+            case 6:
+                setFun(getFun() + 60);
+                setEnergy(getEnergy() + 40);
+                System.out.println(getName()+" loves your attention!");
                 break;
         }
     }
+    
     @Override
     public void walk()
     {
-        setEnergy(getEnergy() + 30);
+        setEnergy(getEnergy() - 40);
+        setHygiene(getHygiene() - 30);
+        setHunger(getHunger() - 30);
         setFun(getFun() + 90);
-        System.out.println(getName()+" thinks that was refreshing!!");
+        System.out.println(getName()+" loves going on walks with you!!");
     }
+    
     @Override
     public void sleep()
     {
         setEnergy(getEnergy() + 80);
-        System.out.println(getName()+" rested enough now..."+getName()+" wants to play...");
+        setHunger(getHunger() - 10);
+        setBladder(getBladder() - 10);
+        System.out.println("Zzzzzzzz");
     }
+    
     @Override
     public void potty()
     {
-        setBladder(getBladder() + 0);
+        setBladder(getBladder() + 60);
+        setHygiene(getHygiene() - 20);
         System.out.println(getName()+" feels much better now...");
     }
 }

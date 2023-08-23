@@ -8,26 +8,22 @@ package virtualpetgame;
  *
  * @author phoeb
  */
-import java.util.InputMismatchException;
-import java.util.Scanner;
 
 public class Player {
     private Animal pet;
-    private Scanner scanner;
     
     public Player() {
-        scanner = new Scanner(System.in);
     }
     
     public void createPet() {
         System.out.println("Choose a pet type: ");
         System.out.println("1. Dog");
         System.out.println("2. Cat");
+        System.out.println("3. Rabbit");
         
-        int choice = getUserChoice("Enter your choice: ", 1, 2);
+        int choice = InputValidator.getUserChoice("Enter your choice: ", 1, 3);
         
-        System.out.println("Enter a name for your pet: ");
-        String name = scanner.nextLine();
+        String name = InputValidator.getValidStringInput("Enter a name for your pet: ");
         
         switch (choice) {
             case 1:
@@ -87,6 +83,18 @@ public class Player {
                         "\n Good luck!" +
                         "\n-----------------------------------------------------------------------------------------------");
                 break;
+            case 3:
+                pet = new Rabbit(name);
+                System.out.println("               ((`\\\n" +
+                        "            ___ \\\\ '--._\n" +
+                        "         .'`   `'    o  )\n" +
+                        "        /    \\   '. __.'\n" +
+                        "       _|    /_  \\ \\_\\_\n" +
+                        "      {_\\______\\-'\\__\\_\\" + 
+                        "\n Remember, " + pet.getName() + " has needs! Being a pet owner is a lot of work." +
+                        "\n " + pet.getName() + " needs food, sleep, playtime, and lot's of attention." +
+                        "\n Good luck!" +
+                        "\n-----------------------------------------------------------------------------------------------");
         }
     }
     
@@ -97,13 +105,14 @@ public class Player {
         showCurrentNeeds(pet);
 
         System.out.println("1. Feed " + pet.getName() + " their favorite food.");
-        System.out.println("2. Play with " + pet.getName() + ".");
-        System.out.println("3. Take " + pet.getName() + " for a walk.");
-        System.out.println("4. Let " + pet.getName() + " get some sleep.");
-        System.out.println("5. Take " + pet.getName() + " out to potty.");
-        System.out.println("6. Exit");
+        System.out.println("2. Fill " + pet.getName() + "'s water bowl.");
+        System.out.println("3. Play with " + pet.getName() + ".");
+        System.out.println("4. Take " + pet.getName() + " for a walk.");
+        System.out.println("5. Let " + pet.getName() + " get some sleep.");
+        System.out.println("6. Take " + pet.getName() + " out to potty.");
+        System.out.println("7. Exit");
 
-        int choice = getUserChoice("Choose an interaction: ", 1, 6);
+        int choice = InputValidator.getUserChoice("Choose an interaction: ", 1, 7);
 
         switch (choice) {
             //Feed pet
@@ -114,15 +123,19 @@ public class Player {
                             + " is too full to eat right now. Try again later.");
                     break;
                 }
-                //Pet needs to go potty
-                if(pet.getBladder() < 20) {
-                    System.out.println(pet.getName() + " needs to go potty first before eating!");
-                    break;
-                }
                 pet.feed();
                 break;
-            //Play with pet
+            //Give water
             case 2:
+                //Pet is not thirsty
+                if(pet.getThirst() > 50) {
+                    System.out.println("Mmh, it seems like " + pet.getName() 
+                            + " is not thirsty to eat right now. Try again later.");
+                    break;
+                }
+                pet.fillWaterBowl();
+            //Play with pet
+            case 3:
                 //Pet is too tired
                 if(pet.getEnergy() < 20) {
                     System.out.println("Oh no! " + pet.getName() + " is too tired to play right now.");
@@ -143,7 +156,7 @@ public class Player {
                 pet.play();
                 break;
             //Take pet for a walk
-            case 3:
+            case 4:
                 //Pet is too tired
                 if(pet.getEnergy() < 30) {
                     System.out.println("Oh no! " + pet.getName() + " is too tired to go out for a walk right now.");
@@ -161,10 +174,10 @@ public class Player {
                     System.out.println(pet.getName() + " needs to go potty first!");
                     break;
                 }
-                pet.play();
+                pet.walk();
                 break;
             //Let pet sleep
-            case 4:
+            case 5:
                 //Pet is not tired
                 if(pet.getEnergy() > 40) {
                     System.out.println("Hmm, it seems like " + pet.getName() + " is not tired.");
@@ -181,10 +194,10 @@ public class Player {
                     System.out.println(pet.getName() + " needs to go potty first!");
                     break;
                 }
-                pet.play();
+                pet.sleep();
                 break;
             //Take pet out to potty
-            case 5:
+            case 6:
                 //Pet doesn't need to go
                 if(pet.getBladder() > 50) {
                     System.out.println("Mmh, it seems like " + pet.getName() 
@@ -193,7 +206,7 @@ public class Player {
                 }
                 pet.potty();
                 break;
-            case 6:
+            case 7:
                 continuePlaying = false;
                 break;
         }
@@ -202,32 +215,10 @@ public class Player {
     System.out.println("Exiting the game. Thank you for playing!");
 }
     
-    private int getUserChoice(String prompt, int min, int max) {
-        int choice = 0;
-        boolean validInput = false;
-        
-        while(!validInput) {
-            System.out.println(prompt);
-            try {
-                choice = scanner.nextInt();
-                scanner.nextLine();
-                if (choice >= min && choice <= max) {
-                    validInput = true;
-                } else {
-                    System.out.println("Invalid choice. Please choose between " 
-                            + min +  " and " + max + ".");
-                }
-            } catch (InputMismatchException e) {
-                System.out.println("Invalid input. Please enter a valid number.");
-                scanner.nextLine();
-            }
-        }
-        return choice;
-    }
-    
     private void showCurrentNeeds(Animal animal) {
         System.out.println("\n" + animal.getName() + "'s Current Needs:");
         System.out.println(">> Hunger: " + animal.getHunger());
+        System.out.println(">> Thirst: " + animal.getThirst());
         System.out.println(">> Bladder: " + animal.getHunger());
         System.out.println(">> Fun: " + animal.getHunger());
         System.out.println(">> Hygiene: " + animal.getHunger());

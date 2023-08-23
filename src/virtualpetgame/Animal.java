@@ -12,11 +12,12 @@ import java.util.List;
 
 public abstract class Animal {
     private String name;
-    private int hunger;
-    private int energy;
-    private int fun;
-    private int hygiene;
-    private int bladder;
+    protected int hunger;
+    protected int energy;
+    protected int fun;
+    protected int hygiene;
+    protected int bladder;
+    protected int thirst;
     
     public Animal(String name) {
         this.name = name;
@@ -25,6 +26,7 @@ public abstract class Animal {
         this.energy = 50;
         this.fun = 50;
         this.hygiene = 50;
+        this.thirst = 50;
     }
     
     //Getter and setter
@@ -72,6 +74,14 @@ public abstract class Animal {
         this.hygiene = Math.min(Math.max(hygiene, 0), 100);
     }
     
+    public int getThirst() {
+        return thirst;
+    }
+    
+    public void setThirst(int thirst) {
+        this.thirst = Math.min(Math.max(thirst, 0), 100);
+    }
+    
     //Print ArrayList options
     public void printOptions(List<String> options) {
         System.out.println("\nChoose an option:");
@@ -87,14 +97,5 @@ public abstract class Animal {
     public abstract void walk();
     public abstract void sleep();
     public abstract void potty();
-   
-   //Print the needs status
-    @Override
-    public String toString(){
-        return "Hunger: " + getHunger() +
-                "\nBladder: " + getBladder() +
-                "\nEnergy: " + getEnergy() +
-                "\nFun: " + getFun() +
-                "\nHygiene: " + getHygiene();
-    }
+    public abstract void fillWaterBowl();
 }
