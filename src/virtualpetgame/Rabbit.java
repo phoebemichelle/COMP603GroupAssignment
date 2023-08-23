@@ -114,7 +114,7 @@ public class Rabbit extends Animal
         setHunger(getHunger() - 30);
         setBladder(getBladder() - 20);
         setFun(getFun() + 90);
-        System.out.println(getName()+" loves walking with you!!");
+        System.out.println(getName()+" loves hopping around!");
     }
     
     @Override
