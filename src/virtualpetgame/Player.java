@@ -134,6 +134,7 @@ public class Player {
                     break;
                 }
                 pet.fillWaterBowl();
+                break;
             //Play with pet
             case 3:
                 //Pet is too tired
