@@ -42,7 +42,7 @@ public class PetFactory {
                         "\n Good luck!" +
                         "\n-----------------------------------------------------------------------------------------------");
                 return new Dog(name);
-            case 2:
+                case 2:
                 System.out.println(
                 "-----------------------------------------------------------------------------------------------" +
                         "\nWelcome to parenthood! You are now the proud new owner of "  + name + "!" +
