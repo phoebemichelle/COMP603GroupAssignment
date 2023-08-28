@@ -27,19 +27,23 @@ public class Cat extends Animal {
         switch(food)
         {
             case 1:
-                setEnergy(getEnergy()+60);
+                setHunger(getHunger() + 60);
+                setEnergy(getEnergy() + 30);
                 System.out.println("Meow! " + getName() + " loves fish!");
                 break;
             case 2:
-                setEnergy(getEnergy()+50);
+                setHunger(getHunger() + 50);
+                setEnergy(getEnergy() + 20);
                 System.out.println(getName() + " enjoyed that.");
                 break;
             case 3:
-                setEnergy(getEnergy()+30);
+                setHunger(getHunger() + 40);
+                setEnergy(getEnergy()+20);
                 System.out.println(getName() + " is bored of cat food!");
                 break;
             case 4:
-                setEnergy(getEnergy()+20);
+                setHunger(getHunger() + 20);
+                setEnergy(getEnergy()+10);
                 System.out.println(getName() + " wants more food...");
                 break;
         }
@@ -49,7 +53,7 @@ public class Cat extends Animal {
     public void fillWaterBowl()
     {
         setBladder(getBladder() - 30);
-        setThirst(getBladder() + 50);
+        setThirst(getThirst() + 50);
         System.out.println("Water bowl refilled! " + getName() + " is staying hydrated!");
     }
     

@@ -110,9 +110,10 @@ public class Player {
         System.out.println("4. Take " + pet.getName() + " for a walk.");
         System.out.println("5. Let " + pet.getName() + " get some sleep.");
         System.out.println("6. Take " + pet.getName() + " out to potty.");
-        System.out.println("7. Exit");
+        System.out.println("7. Give " + pet.getName() + " a bath.");
+        System.out.println("8. Exit");
 
-        int choice = InputValidator.getUserChoice("Choose an interaction: ", 1, 7);
+        int choice = InputValidator.getUserChoice("Choose an interaction: ", 1, 8);
 
         switch (choice) {
             //Feed pet
@@ -208,6 +209,9 @@ public class Player {
                 pet.potty();
                 break;
             case 7:
+                pet.bathe();
+                break;
+            case 8:
                 continuePlaying = false;
                 break;
         }
@@ -216,13 +220,14 @@ public class Player {
     System.out.println("Exiting the game. Thank you for playing!");
 }
     
-    private void showCurrentNeeds(Animal animal) {
-        System.out.println("\n" + animal.getName() + "'s Current Needs:");
-        System.out.println(">> Hunger: " + animal.getHunger());
-        System.out.println(">> Thirst: " + animal.getThirst());
-        System.out.println(">> Bladder: " + animal.getHunger());
-        System.out.println(">> Fun: " + animal.getHunger());
-        System.out.println(">> Hygiene: " + animal.getHunger());
-        System.out.println(">> Energy: " + animal.getHunger() + "\n");
-    }
+    public void showCurrentNeeds(Animal animal) {
+    System.out.println("\n" + animal.getName() + "'s Current Needs:");
+    System.out.println(">> Hunger: " + animal.getHunger());
+    System.out.println(">> Thirst: " + animal.getThirst());
+    System.out.println(">> Bladder: " + animal.getBladder());
+    System.out.println(">> Fun: " + animal.getFun());
+    System.out.println(">> Hygiene: " + animal.getHygiene());
+    System.out.println(">> Energy: " + animal.getEnergy());
+    System.out.println();
+}
 }

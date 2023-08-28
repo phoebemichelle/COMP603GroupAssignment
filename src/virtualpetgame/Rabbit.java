@@ -28,23 +28,28 @@ public class Rabbit extends Animal
         {
             case 1:
                 System.out.println(getName()+" loves chewing on some hay!!!");
-                setEnergy(getEnergy() + 90);
+                setHunger(getHunger() + 70);
+                setEnergy(getEnergy() + 40);
                 break;
             case 2:
                 System.out.println("Yumm... "+getName()+" loved the strawberry! "+getName()+" wants more food.");
-                setEnergy(getEnergy() + 20);
+                setHunger(getHunger() + 20);
+                setEnergy(getEnergy() + 10);
                 break;
             case 3:
                 System.out.println(getName()+" likes the pellets and wants more...");
-                setEnergy(getEnergy() + 50);
+                setHunger(getHunger() + 50);
+                setEnergy(getEnergy() + 20);
                 break;
             case 4:
                 System.out.println(getName()+" loves carrots!!!");
-                setEnergy(getEnergy() + 70);
+                setHunger(getHunger() + 70);
+                setEnergy(getEnergy() + 40);
                 break;
             case 5:
                 System.out.println(getName()+" loves veggies!");
-                setEnergy(getEnergy() + 80);
+                setHunger(getHunger() + 70);
+                setEnergy(getEnergy() + 30);
                 break;
         }
     }
@@ -53,7 +58,7 @@ public class Rabbit extends Animal
     public void fillWaterBowl()
     {
         setBladder(getBladder() - 30);
-        setThirst(getBladder() + 50);
+        setThirst(getThirst() + 50);
         System.out.println("Water bowl refilled! " + getName() + " is staying hydrated!");
     }
     
@@ -81,26 +86,31 @@ public class Rabbit extends Animal
             case 1:
                 setFun(getFun() + 40);
                 setEnergy(getEnergy() - 10);
+                setHunger(getHunger()-10);
                 System.out.println(getName()+" loves playing with you!!");
                 break;
             case 2:
                 setFun(getFun() + 50);
-                setEnergy(getEnergy() - 20);
+                setEnergy(getEnergy() - 40);
+                setHunger(getHunger()-20);
                 System.out.println(getName()+" loves chasing the ball!!!");
                 break;
             case 3:
                 setFun(getFun() + 50);
                 setEnergy(getEnergy() - 30);
+                setHunger(getHunger()-10);
                 System.out.println(getName()+" thinks the grass bed is very comfy...");
                 break;
             case 4:
                 setFun(getFun() + 60);
                 setEnergy(getEnergy() - 50);
+                setHunger(getHunger()-30);
                 System.out.println(getName()+" loves chewing on the toys!!");
                 break;
             case 5:
                 setFun(getFun() + 90);
                 setEnergy(getEnergy() - 70);
+                setHunger(getHunger()-40);
                 System.out.println(getName()+" loves tunneling!!!!");
                 break;
         }

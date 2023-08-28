@@ -28,23 +28,27 @@ public class Dog extends Animal
         switch(food)
         {
             case 1:
-                setEnergy(getEnergy() + 30);
+                setHunger(getHunger() + 30);
+                setEnergy(getEnergy() + 10);
                 System.out.println(getName()+" feels refreshed!");
                 break;
             case 2:
-                setEnergy(getEnergy() + 10);
+                setHunger(getHunger() + 10);
                 System.out.println(getName()+" doesn't really eat greens.");
                 break;
             case 3:
-                setEnergy(getEnergy() + 20);
+                setHunger(getHunger() + 20);
+                setEnergy(getEnergy() + 10);
                 System.out.println(getName()+" wants more food...");
                 break;
             case 4:
-                setEnergy(getEnergy() + 40);
+                setHunger(getHunger() + 40);
+                setEnergy(getEnergy() + 20);
                 System.out.println(getName()+" wants more!");
                 break;
             case 5:
-                setEnergy(getEnergy() + 80);
+                setHunger(getHunger() + 80);
+                setEnergy(getEnergy() + 30);
                 System.out.println("Woof!! "+getName()+" is full now...");
                 break;
         }
@@ -53,8 +57,8 @@ public class Dog extends Animal
     @Override
     public void fillWaterBowl()
     {
-        setBladder(getBladder() - 30);
-        setThirst(getBladder() + 50);
+        setBladder(getBladder() - 40);
+        setThirst(getThirst() + 60);
         System.out.println("Water bowl refilled! " + getName() + " is staying hydrated!");
     }
     
