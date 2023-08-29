@@ -15,7 +15,7 @@ public class VirtualPetGame {
         System.out.println("Welcome to the Virtual Pet Game!");
         GameplayManager gameManager = new GameplayManager();
 
-        int choice = InputValidator.getUserChoice("Choose a pet type:\n1. Dog\n2. Cat\n3. Rabbit\nEnter your choice: ", 1, 3);
+        int choice = InputValidator.getUserChoice("Choose a pet type:\n1. Dog\n2. Cat\n3. Rabbit\n4. Pig\nEnter your choice: ", 1, 4);
         String name = InputValidator.getValidStringInput("Enter a name for your pet: ");
 
         gameManager.createAndSetPet(choice, name);

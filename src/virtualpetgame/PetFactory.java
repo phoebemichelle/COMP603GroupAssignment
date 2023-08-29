@@ -96,6 +96,28 @@ public class PetFactory {
                 "\n Good luck!" +
                 "\n-----------------------------------------------------------------------------------------------");
                 return new Rabbit(name);
+            case 4:
+                System.out.println("-----------------------------------------------------------------------------------------------" +
+                        "\nWelcome to parenthood! You are now the proud new owner of "  + name + "!\n" +
+                        "\n    ,__         __,   \n" + 
+                        "    \\)`\\_...._/`(/   \n" +
+                        "    .'   _   _   '.    \n" + 
+                        "   /     o\\ /o     \\    \n" + 
+                        "   |     .-.-.     |  _  \n" + 
+                        "   |    /() ()\\    |  (,`) \n" +
+                        "  / \\   '-----'   / \\ .'  \n" +
+                        " |    '-..___..-'    |\n"   + 
+                        " |                   |\n" + 
+                        " |                   |\n" + 
+                        " ;                   ;\n" + 
+                        "  \\       / \\       /  \n" +
+                        "   \\-. .-/'-'\\-. .-/  \n" +
+                        "    \\/ \\/     \\/ \\/" +
+                        "\n Remember, " + name + " has needs! Being a pet owner is a lot of work." +
+                "\n " + name + " needs food, sleep, playtime, and lot's of attention." +
+                "\n Good luck!" +
+                "\n-----------------------------------------------------------------------------------------------");
+                return new Pig(name);
             default:
                 throw new IllegalArgumentException("Invalid pet type choice"); 
         }
