@@ -21,7 +21,7 @@ public class Rabbit extends Animal
         foodOptions.add("Pellets");
         foodOptions.add("Carrot");
         foodOptions.add("Leafy veggie");
-        printOptions(foodOptions);
+        Printer.printListOptions(foodOptions);
         
         int food = InputValidator.getUserChoice("Enter a choice: ", 1, 5);
         switch(food)
@@ -78,7 +78,7 @@ public class Rabbit extends Animal
         playOptions.add("Grass Bed");
         playOptions.add("Chew Toy");
         playOptions.add("Rabbit Tunnel");
-        printOptions(playOptions);
+        Printer.printListOptions(playOptions);
         
         int play = InputValidator.getUserChoice("Enter a choice: ", 1, 5);
         switch(play)

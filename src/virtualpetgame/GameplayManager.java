@@ -19,7 +19,7 @@ public class GameplayManager {
         boolean continuePlaying = true;
 
         while (continuePlaying) {
-            showCurrentNeeds(pet);
+            Printer.printCurrentNeeds(pet);
 
             System.out.println("1. Feed " + pet.getName() + " their favorite food.");
             System.out.println("2. Fill " + pet.getName() + "'s water bowl.");
@@ -137,14 +137,4 @@ public class GameplayManager {
         System.out.println("Exiting the game. Thank you for playing!"); 
     }
     
-    public void showCurrentNeeds(Animal animal) {
-        System.out.println("\n" + animal.getName() + "'s Current Needs:");
-        System.out.println(">> Hunger: " + animal.getHunger());
-        System.out.println(">> Thirst: " + animal.getThirst());
-        System.out.println(">> Bladder: " + animal.getBladder());
-        System.out.println(">> Fun: " + animal.getFun());
-        System.out.println(">> Hygiene: " + animal.getHygiene());
-        System.out.println(">> Energy: " + animal.getEnergy());
-        System.out.println();
-    }
 }

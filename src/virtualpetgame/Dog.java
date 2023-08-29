@@ -22,7 +22,7 @@ public class Dog extends Animal
         foodOptions.add("Cheese"); //energy score: 20
         foodOptions.add("Eggs"); //energy score: 40
         foodOptions.add("Meat"); //energy score: 80
-        printOptions(foodOptions);
+        Printer.printListOptions(foodOptions);
         
         int food = InputValidator.getUserChoice("Enter a choice: ", 1, 5);
         switch(food)
@@ -79,7 +79,7 @@ public class Dog extends Animal
         playOptions.add("Sprinkler");
         playOptions.add("Pop Bubbles");
         playOptions.add("Pet");
-        printOptions(playOptions);
+        Printer.printListOptions(playOptions);
         
         int options = InputValidator.getUserChoice("Enter a choice: ", 1, 6);
         switch(options)

@@ -82,14 +82,6 @@ public abstract class Animal {
         this.thirst = Math.min(Math.max(thirst, 0), 100);
     }
     
-    //Print ArrayList options
-    public void printOptions(List<String> options) {
-        System.out.println("\nChoose an option:");
-        for(int i=0; i<options.size();i++) {
-            System.out.println((i+1) + ". " + options.get(i));
-        }
-    }
-    
     //Abstract functions to be implemented in subclasses
     public abstract void feed();
     public abstract void bathe();

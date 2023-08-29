@@ -21,7 +21,7 @@ public class Cat extends Animal {
         foodOptions.add("Chicken");
         foodOptions.add("Cat food");
         foodOptions.add("Cheese");
-        printOptions(foodOptions);
+        Printer.printListOptions(foodOptions);
         
         int food = InputValidator.getUserChoice("Enter a choice: ", 1, 4);
         switch(food)
@@ -70,7 +70,7 @@ public class Cat extends Animal {
         playOptions.add("Squeaky toy");
         playOptions.add("Laser pointer");
         playOptions.add("Brush");
-        printOptions(playOptions);
+        Printer.printListOptions(playOptions);
         
         int play = InputValidator.getUserChoice("Enter a choice: ", 1, 4);
         switch(play)
