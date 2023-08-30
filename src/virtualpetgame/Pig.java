@@ -75,7 +75,7 @@ public class Pig extends Animal
     {
         setBladder(getBladder() - 40);
         setThirst(getThirst() + 60);
-        System.out.println("Water bowl refilled!! "+ getName() + " i staying hydrated!");
+        System.out.println("Water bowl refilled!! "+ getName() + " is staying hydrated!");
     }
     
     @Override
