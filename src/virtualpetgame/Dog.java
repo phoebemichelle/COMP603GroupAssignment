@@ -34,6 +34,7 @@ public class Dog extends Animal
                 break;
             case 2:
                 setHunger(getHunger() + 10);
+                setEnergy(getEnergy() + 50);
                 System.out.println(getName()+" doesn't really eat greens.");
                 break;
             case 3:
