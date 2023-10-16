@@ -90,4 +90,11 @@ public abstract class Animal {
     public abstract void sleep();
     public abstract void potty();
     public abstract void fillWaterBowl();
+    
+    //Print needs
+    public String getNeedsDescription() {
+        return String.format(
+            "%s's Current Needs:\n>> Hunger: %d\n>> Thirst: %d\n>> Bladder: %d\n>> Fun: %d\n>> Hygiene: %d\n>> Energy: %d\n",
+            getName(), getHunger(), getThirst(), getBladder(), getFun(), getHygiene(), getEnergy());
+    }
 }

@@ -1,26 +1,39 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package virtualpetgame;
+    /*
+     * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+     * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+     */
+    package virtualpetgame;
 
-/**
- *
- * @author phoeb
- */
-public class GameplayManager {
-    private Animal pet;
-    
-    public void createAndSetPet(int choice, String name) {
-        pet = PetFactory.createPet(choice, name);
-    }
-    
-    public void playGame() {
-        boolean continuePlaying = true;
+    /**
+     *
+     * @author phoeb
+     */
+    public class GameplayManager {
+        private Animal pet;
+        private boolean continuePlaying;
+        
 
-        while (continuePlaying) {
-            Printer.printCurrentNeeds(pet);
+        public void createAndSetPet(int choice, String name) {
+            pet = PetFactory.createPet(choice, name);
+            if (pet == null) {
+                System.out.println("Invalid pet type. Defaulting to Dog.");
+                pet = PetFactory.createPet(1, name); // 1 represents the pet type for Dog
+            }
+        }
 
+        public void playGame() {
+            continuePlaying = true;
+
+            while (continuePlaying) {
+                Printer.printCurrentNeeds(pet);
+                int choice = getUserInteractionChoice();
+                handleUserChoice(choice);
+            }
+
+            System.out.println("Exiting the game. Thank you for playing!"); 
+        }
+
+        private int getUserInteractionChoice() {
             System.out.println("1. Feed " + pet.getName() + " their favorite food.");
             System.out.println("2. Fill " + pet.getName() + "'s water bowl.");
             System.out.println("3. Play with " + pet.getName() + ".");
@@ -30,111 +43,103 @@ public class GameplayManager {
             System.out.println("7. Give " + pet.getName() + " a bath.");
             System.out.println("8. Exit");
 
-            int choice = InputValidator.getUserChoice("Choose an interaction: ", 1, 8);
-
+            return InputValidator.getUserChoice("Choose an interaction: ", 1, 8);
+        }
+        
+        private void handleUserChoice(int choice) {
             switch (choice) {
-                //Feed pet
-                case 1:
-                    //Pet is full
-                    if(pet.getHunger() > 50) {
-                        System.out.println("Mmh, it seems like " + pet.getName() 
-                                + " is too full to eat right now. Try again later.");
-                        break;
-                    }
-                    pet.feed();
-                    break;
-                //Give water
-                case 2:
-                    //Pet is not thirsty
-                    if(pet.getThirst() > 50) {
-                        System.out.println("Mmh, it seems like " + pet.getName() 
-                                + " is not thirsty to eat right now. Try again later.");
-                        break;
-                    }
-                    pet.fillWaterBowl();
-                    break;
-                //Play with pet
-                case 3:
-                    //Pet is too tired
-                    if(pet.getEnergy() < 20) {
-                        System.out.println("Oh no! " + pet.getName() + " is too tired to play right now.");
-                        System.out.println("Try letting " + pet.getName() + " get some rest first.");
-                        break;
-                    }
-                    //Pet is too hungry
-                    if(pet.getHunger() < 20) {
-                        System.out.println("Oh no! " + pet.getName() + " is too hungry to play right now.");
-                        System.out.println("Try feeding " + pet.getName() + " first.");
-                        break;
-                    }
-                    //Pet needs to go potty
-                    if(pet.getBladder() < 20) {
-                        System.out.println(pet.getName() + " needs to go potty first before playing!");
-                        break;
-                    }
-                    pet.play();
-                    break;
-                //Take pet for a walk
-                case 4:
-                    //Pet is too tired
-                    if(pet.getEnergy() < 30) {
-                        System.out.println("Oh no! " + pet.getName() + " is too tired to go out for a walk right now.");
-                        System.out.println("Try letting " + pet.getName() + " get some rest first.");
-                        break;
-                    }
-                    //Pet is too hungry
-                    if(pet.getHunger() < 20) {
-                        System.out.println("Oh no! " + pet.getName() + " is too hungry right now.");
-                        System.out.println("Try feeding " + pet.getName() + " first.");
-                        break;
-                    }
-                    //Pet needs to go potty
-                    if(pet.getBladder() < 20) {
-                        System.out.println(pet.getName() + " needs to go potty first!");
-                        break;
-                    }
-                    pet.walk();
-                    break;
-                //Let pet sleep
-                case 5:
-                    //Pet is not tired
-                    if(pet.getEnergy() > 40) {
-                        System.out.println("Hmm, it seems like " + pet.getName() + " is not tired.");
-                        break;
-                    }
-                    //Pet is too hungry
-                    if(pet.getHunger() < 20) {
-                        System.out.println("Oh no! " + pet.getName() + " is too hungry right now.");
-                        System.out.println("Try feeding " + pet.getName() + " first.");
-                        break;
-                    }
-                    //Pet needs to go potty
-                    if(pet.getBladder() < 20) {
-                        System.out.println(pet.getName() + " needs to go potty first!");
-                        break;
-                    }
-                    pet.sleep();
-                    break;
-                //Take pet out to potty
-                case 6:
-                    //Pet doesn't need to go
-                    if(pet.getBladder() > 50) {
-                        System.out.println("Mmh, it seems like " + pet.getName() 
-                                + " does not need to potty right now.");
-                        break;
-                    }
-                    pet.potty();
-                    break;
-                case 7:
-                    pet.bathe();
-                    break;
-                case 8:
-                    continuePlaying = false;
-                    break;
+            case 1:
+                handleFeedAction();
+                break;
+            case 2:
+                handleFillWaterBowlAction();
+                break;
+            case 3:
+                handlePlayAction();
+                break;
+            case 4:
+                handleWalkAction();
+                break;
+            case 5:
+                handleSleepAction();
+                break;
+            case 6:
+                handlePottyAction();
+                break;
+            case 7:
+                pet.bathe();
+                break;
+            case 8:
+                continuePlaying = false;
+                break;
+            }
+        }
+        
+            private void handleFeedAction() {
+            if (pet.getHunger() > 50) {
+                System.out.println("Mmh, it seems like " + pet.getName() +
+                        " is too full to eat right now. Try again later.");
+            } else {
+                pet.feed();
             }
         }
 
-        System.out.println("Exiting the game. Thank you for playing!"); 
+        private void handleFillWaterBowlAction() {
+            if (pet.getThirst() > 50) {
+                System.out.println("Mmh, it seems like " + pet.getName() +
+                        " is not thirsty right now. Try again later.");
+            } else {
+                pet.fillWaterBowl();
+            }
+        }
+
+        private void handlePlayAction() {
+            if (pet.getEnergy() < 20) {
+                System.out.println("Oh no! " + pet.getName() + " is too tired to play right now.");
+                System.out.println("Try letting " + pet.getName() + " get some rest first.");
+            } else if (pet.getHunger() < 20) {
+                System.out.println("Oh no! " + pet.getName() + " is too hungry to play right now.");
+                System.out.println("Try feeding " + pet.getName() + " first.");
+            } else if (pet.getBladder() < 20) {
+                System.out.println(pet.getName() + " needs to go potty first before playing!");
+            } else {
+                pet.play();
+            }
+        }
+
+        private void handleWalkAction() {
+            if (pet.getEnergy() < 30) {
+                System.out.println("Oh no! " + pet.getName() + " is too tired to go out for a walk right now.");
+                System.out.println("Try letting " + pet.getName() + " get some rest first.");
+            } else if (pet.getHunger() < 20) {
+                System.out.println("Oh no! " + pet.getName() + " is too hungry right now.");
+                System.out.println("Try feeding " + pet.getName() + " first.");
+            } else if (pet.getBladder() < 20) {
+                System.out.println(pet.getName() + " needs to go potty first!");
+            } else {
+                pet.walk();
+            }
+        }
+
+        private void handleSleepAction() {
+            if (pet.getEnergy() > 40) {
+                System.out.println("Hmm, it seems like " + pet.getName() + " is not tired.");
+            } else if (pet.getHunger() < 20) {
+                System.out.println("Oh no! " + pet.getName() + " is too hungry right now.");
+                System.out.println("Try feeding " + pet.getName() + " first.");
+            } else if (pet.getBladder() < 20) {
+                System.out.println(pet.getName() + " needs to go potty first!");
+            } else {
+                pet.sleep();
+            }
+        }
+
+        private void handlePottyAction() {
+            if (pet.getBladder() > 50) {
+                System.out.println("Mmh, it seems like " + pet.getName() +
+                        " does not need to potty right now.");
+            } else {
+                pet.potty();
+            }
+        }
     }
-    
-}

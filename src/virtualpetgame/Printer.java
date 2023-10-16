@@ -25,13 +25,6 @@ public class Printer {
     
     //Print pet's current needs
     public static void printCurrentNeeds(Animal animal) {
-        System.out.println("\n" + animal.getName() + "'s Current Needs:");
-        System.out.println(">> Hunger: " + animal.getHunger());
-        System.out.println(">> Thirst: " + animal.getThirst());
-        System.out.println(">> Bladder: " + animal.getBladder());
-        System.out.println(">> Fun: " + animal.getFun());
-        System.out.println(">> Hygiene: " + animal.getHygiene());
-        System.out.println(">> Energy: " + animal.getEnergy());
-        System.out.println();
+        System.out.println(animal.getNeedsDescription());
     }
 }

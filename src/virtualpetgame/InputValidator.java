@@ -12,7 +12,11 @@ package virtualpetgame;
 import java.util.Scanner;
 
 public class InputValidator {
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
+    //Constant for messages
+    public static final String INVALID_CHOICE_MESSAGE = "Invalid choice. Please choose between %d and %d.";
+    public static final String INVALID_INPUT_MESSAGE = "Invalid input. Please enter a valid number between %d and %d.";
+    public static final String EMPTY_INPUT_MESSAGE = "Input cannot be empty. Please enter a valid string.";
     
     //Private constructor to prevent instantiation
     private InputValidator() {
@@ -30,12 +34,11 @@ public class InputValidator {
                 if (choice >= min && choice <= max) {
                     validInput = true;
                 } else {
-                    System.out.println("Invalid choice. Please choose between " 
-                            + min +  " and " + max + ".");
+                    System.out.println(String.format(INVALID_CHOICE_MESSAGE, min, max));
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a valid number "
-                        + "between " + min + " and " + max + ".");
+                    System.out.println(String.format(INVALID_INPUT_MESSAGE, min, max));
+
             }
         }
         return choice;
@@ -50,7 +53,7 @@ public class InputValidator {
             userInput = scanner.nextLine().trim();
 
             if (userInput.isEmpty()) {
-                System.out.println("Input cannot be empty. Please enter a valid string.");
+                System.out.println(EMPTY_INPUT_MESSAGE);
             }
         }
 
