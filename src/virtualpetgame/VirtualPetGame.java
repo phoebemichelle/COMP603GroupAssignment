@@ -8,19 +8,28 @@ package virtualpetgame;
  *
  * @author phoebe
  */
+import java.util.List;
 
 public class VirtualPetGame {
 
     public static void main(String[] args) {
-        System.out.println("Welcome to the Virtual Pet Game!");
-        GameplayManager gameManager = new GameplayManager();
+        DatabaseSetup dbManager = new DatabaseSetup();
+        List<Animal> existingPets = dbManager.loadExistingPets();
+        GameplayManager gameManager = new GameplayManager(dbManager);
 
-        int choice = InputValidator.getUserChoice("Choose a pet type:\n1. Dog\n2. Cat\n", 1, 2);
-        String name = InputValidator.getValidStringInput("Enter a name for your pet: ");
+        //Choose from existing pets or create new
+        int loadChoice = MenuHandler.displayMainMenu();
 
-        gameManager.createAndSetPet(choice, name);
+        if (loadChoice == 1 && !existingPets.isEmpty()) {
+            int petChoice = MenuHandler.displayPetSelectionMenu(existingPets);
+            gameManager.setPet(existingPets.get(petChoice - 1));
+        } else {
+            int petType = MenuHandler.displayPetTypeSelectionMenu();
+            String name = MenuHandler.getPetName();
+            gameManager.createAndSetPet(petType, name);
+        }
+
         gameManager.playGame();
+        dbManager.closeConnections();
     }
-    
-    
 }

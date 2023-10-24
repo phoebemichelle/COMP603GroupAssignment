@@ -30,6 +30,15 @@ public abstract class Animal {
     }
     
     //Getter and setter
+    public void setAttributes(int hunger, int energy, int fun, int hygiene, int bladder, int thirst) {
+        setHunger(hunger);
+        setEnergy(energy);
+        setFun(fun);
+        setHygiene(hygiene);
+        setBladder(bladder);
+        setThirst(thirst);
+    }
+    
     public String getName() {
         return name;
     }

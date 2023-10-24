@@ -11,7 +11,16 @@
     public class GameplayManager {
         private Animal pet;
         private boolean continuePlaying;
+        private DatabaseSetup dbManager;
         
+        //Constructor to pass the database from the main class
+        public GameplayManager(DatabaseSetup dbManager) {
+            this.dbManager = dbManager;
+        }
+        
+        public void setPet(Animal pet) {
+            this.pet = pet;
+        }
 
         public void createAndSetPet(int choice, String name) {
             pet = PetFactory.createPet(choice, name);
@@ -29,8 +38,6 @@
                 int choice = getUserInteractionChoice();
                 handleUserChoice(choice);
             }
-
-            System.out.println("Exiting the game. Thank you for playing!"); 
         }
 
         private int getUserInteractionChoice() {
@@ -41,7 +48,7 @@
             System.out.println("5. Let " + pet.getName() + " get some sleep.");
             System.out.println("6. Take " + pet.getName() + " out to potty.");
             System.out.println("7. Give " + pet.getName() + " a bath.");
-            System.out.println("8. Exit");
+            System.out.println("8. Save pet and Exit");
 
             return InputValidator.getUserChoice("Choose an interaction: ", 1, 8);
         }
@@ -70,7 +77,7 @@
                 pet.bathe();
                 break;
             case 8:
-                continuePlaying = false;
+                savePetAndExit();
                 break;
             }
         }
@@ -141,5 +148,11 @@
             } else {
                 pet.potty();
             }
+        }
+        
+        private void savePetAndExit() {
+            dbManager.saveNewPet(pet); // Save the pet to the database using the existing dbManager object
+            System.out.println("Pet saved successfully! Thank you for playing the game.");
+            continuePlaying = false;
         }
     }
