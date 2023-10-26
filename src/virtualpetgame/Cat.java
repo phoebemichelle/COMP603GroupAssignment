@@ -5,48 +5,87 @@ package virtualpetgame;
  * @author phoebe
  */
 import java.util.*;
+import javax.swing.*;
 
-public class Cat extends Animal {
+public class Cat extends Animal 
+{
+    private String food = "";
+    private String playing = "";
+    private Animal pet;
+    
+    // Storing the message to print it out in the frame
+    private String message = "";
+    
+    // JLabel to display the status of the Cat
+    private JLabel status;
     
     //Constructor
-    public Cat(String name){
+    public Cat(String name)
+    {
         super(name);
+    }
+    
+    //setter method for status label
+    public void setStatus(JLabel status)
+    {
+        this.status = status;
+    }
+    //getter method for status label
+    public JLabel getStatus()
+    {
+        return this.status;
+    }
+    //setter method to set the type of food
+    public void setFood(String food)
+    {
+        this.food = food;
+    }
+    //setter method to set the play option
+    public void setPlay(String playing)
+    {
+        this.playing = playing;
+    }
+    //getter method for message
+    public String getMessage()
+    {
+        return this.message;
+    }
+    //setter method for message
+    public void setMessage(String message)
+    {
+        this.message = message;
     }
     
     //Implement feed method in Cat class
     @Override
-    public void feed(){
-        List<String> foodOptions = new ArrayList<>();
-        foodOptions.add("Fish");
-        foodOptions.add("Chicken");
-        foodOptions.add("Cat food");
-        foodOptions.add("Cheese");
-        Printer.printListOptions(foodOptions);
-        
-        int food = InputValidator.getUserChoice("Enter a choice: ", 1, 4);
+    public void feed()
+    {
         switch(food)
         {
-            case 1:
+            case "Fish":
                 setHunger(getHunger() + 60);
                 setEnergy(getEnergy() + 30);
-                System.out.println("Meow! " + getName() + " loves fish!");
+                this.message = "Meow! " + pet.getName() + " loves fish!";
                 break;
-            case 2:
+            case "Chicken":
                 setHunger(getHunger() + 50);
                 setEnergy(getEnergy() + 20);
-                System.out.println(getName() + " enjoyed that.");
+                this.message = pet.getName() + " enjoyed that.";
                 break;
-            case 3:
+            case "Cat Food":
                 setHunger(getHunger() + 40);
                 setEnergy(getEnergy()+20);
-                System.out.println(getName() + " is bored of cat food!");
+                this.message = pet.getName() + " is bored of cat food!";
                 break;
-            case 4:
+            case "Cheese":
                 setHunger(getHunger() + 20);
                 setEnergy(getEnergy()+10);
-                System.out.println(getName() + " wants more food...");
+                this.message = pet.getName() + " wants more food...";
                 break;
+            default:
+                this.message = "Food option does not exists in the Menu!";
         }
+        
     }
     
     @Override
@@ -54,51 +93,47 @@ public class Cat extends Animal {
     {
         setBladder(getBladder() - 30);
         setThirst(getThirst() + 50);
-        System.out.println("Water bowl refilled! " + getName() + " is staying hydrated!");
+        this.message = "Water bowl refilled! " + pet.getName() + " is staying hydrated!";
     }
     
     @Override
-    public void bathe(){
+    public void bathe()
+    {
         setHygiene(getHygiene()+70);
-        System.out.println(getName() + " smells much better now!");
+        this.message = pet.getName() + " smells much better now!";
     }
     
     @Override
-    public void play(){
-        List<String> playOptions = new ArrayList();
-        playOptions.add("Pet");
-        playOptions.add("Squeaky toy");
-        playOptions.add("Laser pointer");
-        playOptions.add("Brush");
-        Printer.printListOptions(playOptions);
-        
-        int play = InputValidator.getUserChoice("Enter a choice: ", 1, 4);
-        switch(play)
+    public void play()
+    {
+        switch(playing)
         {
-            case 1:
+            case "Pet":
                 setFun(getFun()+30);
                 setEnergy(getEnergy()-10);
-                System.out.println(getName() + " loves spending time with you!");
+                this.message = pet.getName() + " loves spending time with you!";
                 break;
-            case 2:
+            case "Squeaky Toy":
                 setFun(getFun()+60);
                 setEnergy(getEnergy()-30);
                 setHunger(getHunger() - 20);
-                System.out.println("Squeak, squeak! " + getName() + " had so much fun!");
+                this.message = "Squeak, squeak! " + pet.getName() + " had so much fun!";
                 break;
-            case 3:
+            case "Laser":
                 setFun(getFun()+40);
                 setEnergy(getEnergy()-20);
                 setHunger(getHunger() - 10);
-                System.out.println(getName() + " was so focused!");
+                this.message = pet.getName() + " was so focused!";
                 break;
-            case 4:
+            case "Brusg":
                 setFun(getFun()+20);
                 setHygiene(getHygiene()+10);
                 setEnergy(getEnergy()-10);
-                System.out.println(getName() + " now looks more cute!!");
+                this.message = pet.getName() + " now looks more cute!!";
                 break;
-        }
+            default:
+                this.message = "Play option does not exist!";
+           }
     }
     
     @Override
@@ -107,7 +142,7 @@ public class Cat extends Animal {
         setHygiene(getHygiene()-40);
         setFun(getFun()+10);
         setHunger(getHunger() - 30);
-        System.out.println(getName() + " doesn't really enjoy walks!");
+        this.message = pet.getName() + " doesn't really enjoy walks!";
     }
     
     @Override
@@ -115,13 +150,13 @@ public class Cat extends Animal {
         setEnergy(getEnergy()+80);
         setHunger(getHunger()-10);
         setBladder(getBladder()-10);
-        System.out.println("Zzzzzzzz");
+        this.message = "Zzzzzzzz";
     }
     
     @Override
     public void potty(){
         setBladder(getBladder() + 60);
         setHygiene(getHygiene()-20);
-        System.out.println("Phew, that was close. " + getName()+" really had to go!");
+        this.message = "Phew, that was close. " + pet.getName()+" really had to go!";
     }
 }
