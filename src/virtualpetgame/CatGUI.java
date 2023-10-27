@@ -8,13 +8,13 @@ import java.awt.event.ActionEvent;
 import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseAdapter;
-import java.awt.*;
+import java.awt.event.ActionListener;
 
 /**
  *
  * @author alekh
  */
-public class CatGUI extends JFrame {
+public class CatGUI extends GUI {
 
     private Cat cat;
     private JLabel status = new JLabel();
@@ -179,8 +179,4 @@ public class CatGUI extends JFrame {
         status.setText("\n" + cat.getNeedsDescription() + "\n" + message + "\n");
 
     }
-
-   /* public static void main(String[] args) {
-        CatGUI gui = new CatGUI("Whiskers");
-    }*/
 }

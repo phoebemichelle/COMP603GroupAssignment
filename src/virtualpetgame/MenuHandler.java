@@ -70,7 +70,9 @@ public class MenuHandler
     
     public void displayMainMenu()
     {
-        text.setText("Welcome to Virtual Pet Game!!");
+        text.setText("Welcome to Virtual Pet Game!!"+ "\n" + 
+                "You can choose to play with our Pets under PETS LIST button" + "\n" +
+                "To make a Pet of your own, click on NEW PET");
     }
     
     private int displayPetSelectionMenu(List<Animal> existingPets)
@@ -108,7 +110,7 @@ public class MenuHandler
                 }
             } catch(NumberFormatException nfe)
             {
-                showMessage("Invalid input!");
+                showMessage("Invalid pet choice! Choose from 1 or 2 only!");
             }
         }
         return choice;

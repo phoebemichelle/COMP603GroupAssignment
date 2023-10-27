@@ -14,7 +14,7 @@ import java.awt.*;
  *
  * @author alekh
  */
-public class DogGUI extends JFrame
+public class DogGUI extends GUI
 {
     private Dog dog;
     private JLabel status = new JLabel();
@@ -201,11 +201,5 @@ public class DogGUI extends JFrame
     private void updateStatus(String message)
     {
         status.setText("\n" + dog.getNeedsDescription() + "\n" + message + "\n");
-    }
-    
-   /* public static void main(String args[])
-    {
-        DogGUI gui = new DogGUI("Fleetfoot");
-    }
-    */
+    }    
 }

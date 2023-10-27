@@ -1,14 +1,13 @@
-Tue Oct 24 17:26:56 NZDT 2023 : Apache Derby Network Server - 10.14.2.0 - (1828579) started and ready to accept connections on port 1527
 ----------------------------------------------------------------
-Tue Oct 24 17:26:57 NZDT 2023:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-018b-5fef-8bc8-ffff9bd881fd 
-on database directory D:\AUT\Sem 3 - July 2023\COMP603 - Software Construction\Group Assignment\VirtualPetGame\virtualpetdb with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2cdf8d8a 
-Loaded from file:/D:/AUT/Sem%203%20-%20July%202023/COMP603%20-%20Software%20Construction/Week%208/db-derby-10.14.2.0-bin/db-derby-10.14.2.0-bin/lib/derby.jar
+Fri Oct 27 17:58:42 NZDT 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-018b-6f7f-b416-00000f029948 
+on database directory C:\Users\alekh\OneDrive\Documents\NetBeansProjects\VIRTUAL_PETGAME\virtualpetdb with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e 
+Loaded from file:/C:/Users/alekh/OneDrive/Documents/NetBeansProjects/VIRTUAL_PETGAME/lib/derby.jar
 java.vendor=Oracle Corporation
-java.runtime.version=11.0.19+9-LTS-224
-user.dir=D:\AUT\Sem 3 - July 2023\COMP603 - Software Construction\Week 8\db-derby-10.14.2.0-bin\db-derby-10.14.2.0-bin
+java.runtime.version=20+36-2344
+user.dir=C:\Users\alekh\OneDrive\Documents\NetBeansProjects\VIRTUAL_PETGAME
 os.name=Windows 11
 os.arch=amd64
 os.version=10.0
-derby.system.home=D:\AUT\Sem 3 - July 2023\COMP603 - Software Construction\Group Assignment\VirtualPetGame
+derby.system.home=null
 Database Class Loader started - derby.database.classpath=''

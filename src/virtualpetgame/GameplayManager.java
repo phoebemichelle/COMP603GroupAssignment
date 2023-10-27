@@ -34,7 +34,7 @@
             continuePlaying = true;
 
             while (continuePlaying) {
-                Printer.printCurrentNeeds(pet);
+               // Printer.printCurrentNeeds(pet);
                 int choice = getUserInteractionChoice();
                 handleUserChoice(choice);
             }

@@ -11,7 +11,7 @@ import java.awt.*;
  *
  * @author alekh
  */
-public class GUI 
+public class GUI extends JFrame
 {
     private JFrame frame;
     private PetPanel petPanel;
@@ -28,9 +28,7 @@ public class GUI
         frame = new JFrame("VIRTUAL PET GAME");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600, 600);
-        
-        petPanel = new PetPanel();
-        
+                
         feedButton = new JButton("Feed");
         batheButton = new JButton("Bathe");
         playButton = new JButton("Play");

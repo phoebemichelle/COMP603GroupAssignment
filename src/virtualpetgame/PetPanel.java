@@ -7,6 +7,9 @@ package virtualpetgame;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import javax.swing.*;
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
 
 /**
  *
@@ -16,8 +19,9 @@ public class PetPanel extends JPanel
 {
     private BufferedImage pet;
     
-    public PetPanel()
+    public PetPanel(BufferedImage pet)
     {
+        this.pet = pet;
         setPreferredSize(new Dimension(pet.getWidth(), pet.getHeight()));
     }
     
@@ -25,8 +29,9 @@ public class PetPanel extends JPanel
     protected void paintComponent(Graphics g)
     {
         super.paintComponent(g);
-        
-        g.drawImage(pet, 0, 0, this);
+        if(pet != null) {
+            g.drawImage(pet, 0, 0, this);
+        }
     }
     
 }
