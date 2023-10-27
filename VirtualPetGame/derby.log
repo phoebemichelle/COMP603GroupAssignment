@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Sat Oct 28 11:53:41 NZDT 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-018b-7357-e38f-000007383d48 
+on database directory D:\AUT\Sem 3 - July 2023\COMP603 - Software Construction\Group Assignment\VirtualPetGame\VirtualPetGame\virtualpetdb with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@5c29bfd 
+Loaded from file:/D:/AUT/Sem%203%20-%20July%202023/COMP603%20-%20Software%20Construction/Group%20Assignment/VirtualPetGame/VirtualPetGame/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=11.0.19+9-LTS-224
+user.dir=D:\AUT\Sem 3 - July 2023\COMP603 - Software Construction\Group Assignment\VirtualPetGame\VirtualPetGame
+os.name=Windows 11
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
