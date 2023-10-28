@@ -4,7 +4,6 @@
  */
 package virtualpetgame;
 
-import java.awt.image.BufferedImage;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -16,39 +15,31 @@ import static org.junit.Assert.*;
  *
  * @author alekh
  */
-public class ImageLoadingTest {
-    
-    public ImageLoadingTest() {
+public class GameplayFrameGUITest {
+
+    public GameplayFrameGUITest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
 
-    /**
-     * Test of loadImages method, of class ImageLoading.
-     */
     @Test
-    public void testLoadImages() {
-        System.out.println("loadImages");
-        String file = "";
-        BufferedImage expResult = null;
-        BufferedImage result = ImageLoading.loadImages(file);
-        assertEquals(expResult, result);
+    public void testSomeMethod() {
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
-    
+
 }

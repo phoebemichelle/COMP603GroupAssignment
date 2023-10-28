@@ -8,7 +8,6 @@ package virtualpetgame;
  *
  * @author phoeb
  */
-
 import java.util.List;
 
 public class MenuHandler {

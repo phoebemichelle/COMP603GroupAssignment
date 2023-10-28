@@ -15,9 +15,9 @@ import static org.junit.Assert.*;
  *
  * @author alekh
  */
-public class PetFactoryTest {
+public class GameplayManagerTest {
 
-    public PetFactoryTest() {
+    public GameplayManagerTest() {
     }
 
     @BeforeClass
@@ -37,15 +37,26 @@ public class PetFactoryTest {
     }
 
     /**
-     * Test of createPet method, of class PetFactory.
+     * Test of setPet method, of class GameplayManager.
      */
     @Test
-    public void testCreatePet() {
-        System.out.println("createPet");
+    public void testSetPet() {
+        System.out.println("setPet");
+        Animal pet = new Dog("Fleetfoot");
+        GameplayManager instance = new GameplayManager();
+        instance.setPet(pet);
+    }
+
+    /**
+     * Test of createAndSetPet method, of class GameplayManager.
+     */
+    @Test
+    public void testCreateAndSetPet() {
+        System.out.println("createAndSetPet");
         int choice = 1;
         String name = "Fleetfoot";
-        Animal result = PetFactory.createPet(choice, name);
-        assertEquals(name, result.getName());
+        GameplayManager instance = new GameplayManager();
+        instance.createAndSetPet(choice, name);
     }
 
 }

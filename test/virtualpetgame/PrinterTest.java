@@ -4,6 +4,7 @@
  */
 package virtualpetgame;
 
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -15,9 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author alekh
  */
-public class PetFactoryTest {
+public class PrinterTest {
 
-    public PetFactoryTest() {
+    public PrinterTest() {
     }
 
     @BeforeClass
@@ -37,15 +38,14 @@ public class PetFactoryTest {
     }
 
     /**
-     * Test of createPet method, of class PetFactory.
+     * Test of printCurrentNeeds method, of class Printer.
      */
     @Test
-    public void testCreatePet() {
-        System.out.println("createPet");
-        int choice = 1;
-        String name = "Fleetfoot";
-        Animal result = PetFactory.createPet(choice, name);
-        assertEquals(name, result.getName());
+    public void testPrintCurrentNeeds() {
+        System.out.println("printCurrentNeeds");
+        Animal animal = new Dog("TestDog");
+        animal.setAttributes(50, 30, 20, 60, 70, 40);
+        Printer.printCurrentNeeds(animal);
     }
 
 }

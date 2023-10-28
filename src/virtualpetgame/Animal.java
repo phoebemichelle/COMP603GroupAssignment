@@ -11,6 +11,7 @@ package virtualpetgame;
 import java.util.List;
 
 public abstract class Animal {
+
     private String name;
     protected int hunger;
     protected int energy;
@@ -18,7 +19,7 @@ public abstract class Animal {
     protected int hygiene;
     protected int bladder;
     protected int thirst;
-    
+
     public Animal(String name) {
         this.name = name;
         this.hunger = 50;
@@ -28,7 +29,7 @@ public abstract class Animal {
         this.hygiene = 50;
         this.thirst = 50;
     }
-    
+
     //Getter and setter
     public void setAttributes(int hunger, int energy, int fun, int hygiene, int bladder, int thirst) {
         setHunger(hunger);
@@ -38,7 +39,7 @@ public abstract class Animal {
         setBladder(bladder);
         setThirst(thirst);
     }
-    
+
     public String getName() {
         return name;
     }
@@ -54,11 +55,11 @@ public abstract class Animal {
     public int getBladder() {
         return bladder;
     }
-    
+
     public void setBladder(int bladder) {
         this.bladder = Math.min(Math.max(bladder, 0), 100);
     }
-    
+
     public int getEnergy() {
         return energy;
     }
@@ -82,28 +83,34 @@ public abstract class Animal {
     public void setHygiene(int hygiene) {
         this.hygiene = Math.min(Math.max(hygiene, 0), 100);
     }
-    
+
     public int getThirst() {
         return thirst;
     }
-    
+
     public void setThirst(int thirst) {
         this.thirst = Math.min(Math.max(thirst, 0), 100);
     }
-    
+
     //Abstract functions to be implemented in subclasses
     public abstract void feed();
+
     public abstract void bathe();
+
     public abstract void play();
+
     public abstract void walk();
+
     public abstract void sleep();
+
     public abstract void potty();
+
     public abstract void fillWaterBowl();
-    
+
     //Print needs
     public String getNeedsDescription() {
         return String.format(
-            "%s's Current Needs:\n>> Hunger: %d\n>> Thirst: %d\n>> Bladder: %d\n>> Fun: %d\n>> Hygiene: %d\n>> Energy: %d\n",
-            getName(), getHunger(), getThirst(), getBladder(), getFun(), getHygiene(), getEnergy());
+                "%s's Current Needs:\n>> Hunger: %d\n>> Thirst: %d\n>> Bladder: %d\n>> Fun: %d\n>> Hygiene: %d\n>> Energy: %d\n",
+                getName(), getHunger(), getThirst(), getBladder(), getFun(), getHygiene(), getEnergy());
     }
 }

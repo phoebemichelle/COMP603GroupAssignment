@@ -15,37 +15,31 @@ import static org.junit.Assert.*;
  *
  * @author alekh
  */
-public class VirtualPetGameTest {
-    
-    public VirtualPetGameTest() {
+public class LoadPetGUITest {
+
+    public LoadPetGUITest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
 
-    /**
-     * Test of main method, of class VirtualPetGame.
-     */
     @Test
-    public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        VirtualPetGame.main(args);
+    public void testSomeMethod() {
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
-    
+
 }
