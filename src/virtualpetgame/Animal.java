@@ -103,13 +103,7 @@ public abstract class Animal {
     //Print needs
     public String getNeedsDescription() {
         return String.format(
-            "%s's Current Needs:\n"
-                    + ">> Hunger: %d\n"
-                    + ">> Thirst: %d\n"
-                    + ">> Bladder: %d\n"
-                    + ">> Fun: %d\n"
-                    + ">> Hygiene: %d\n"
-                    + ">> Energy: %d\n",
+            "%s's Current Needs:\n>> Hunger: %d\n>> Thirst: %d\n>> Bladder: %d\n>> Fun: %d\n>> Hygiene: %d\n>> Energy: %d\n",
             getName(), getHunger(), getThirst(), getBladder(), getFun(), getHygiene(), getEnergy());
     }
 }

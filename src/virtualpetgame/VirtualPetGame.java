@@ -4,48 +4,32 @@
  */
 package virtualpetgame;
 
-import java.awt.BorderLayout;
-import javax.swing.*;
-
 /**
  *
  * @author phoebe
  */
+import java.util.List;
 
-public class VirtualPetGame 
-{
-    public static void main(String[] args) 
-    {
-        SwingUtilities.invokeLater(new Runnable() { 
-            @Override
-            public void run() 
-            {
-                JFrame mainFrame = new JFrame("VIRTUAL PET GAME");
-                mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                mainFrame.setLayout(new BorderLayout());
-                
-                JTextArea text = new JTextArea();
-                text.setEnabled(false);
-                mainFrame.add(new JScrollPane(text), BorderLayout.CENTER);
-                
-                JButton[] buttons = new JButton[2];
-                buttons[0] = new JButton("PET LIST");
-                buttons[1] = new JButton("NEW PET");
-                
-                JPanel buttonsPanel =new JPanel();
-                
-                for(JButton button: buttons)
-                {
-                    buttonsPanel.add(button);
-                }                
-                mainFrame.add(buttonsPanel, BorderLayout.SOUTH);
-                
-                MenuHandler menuHandler = new MenuHandler(text, buttons);
-                menuHandler.displayMainMenu();
-                
-                mainFrame.setSize(400, 300);
-                mainFrame.setVisible(true);                
-            }
-        });
+public class VirtualPetGame {
+
+    public static void main(String[] args) {
+        DatabaseSetup dbManager = new DatabaseSetup();
+        List<Animal> existingPets = dbManager.loadExistingPets();
+        GameplayManager gameManager = new GameplayManager(dbManager);
+
+        //Choose from existing pets or create new
+        int loadChoice = MenuHandler.displayMainMenu();
+
+        if (loadChoice == 1 && !existingPets.isEmpty()) {
+            int petChoice = MenuHandler.displayPetSelectionMenu(existingPets);
+            gameManager.setPet(existingPets.get(petChoice - 1));
+        } else {
+            int petType = MenuHandler.displayPetTypeSelectionMenu();
+            String name = MenuHandler.getPetName();
+            gameManager.createAndSetPet(petType, name);
+        }
+
+        gameManager.playGame();
+        dbManager.closeConnections();
     }
 }
