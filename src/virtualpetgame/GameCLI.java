@@ -10,12 +10,12 @@ package virtualpetgame;
  */
 import java.util.List;
 
-public class VirtualPetGame {
+public class GameCLI {
 
     public static void main(String[] args) {
         DatabaseSetup dbManager = new DatabaseSetup();
         List<Animal> existingPets = dbManager.loadExistingPets();
-        GameplayManager gameManager = new GameplayManager(dbManager);
+        GameplayManager gameManager = new GameplayManager();
 
         //Choose from existing pets or create new
         int loadChoice = MenuHandler.displayMainMenu();

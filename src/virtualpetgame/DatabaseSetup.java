@@ -23,10 +23,10 @@ public class DatabaseSetup {
     private static final String USERNAME = "pdc"; //your DB username
     private static final String PASSWORD = "pdc"; //your DB password
     
-    Connection conn;
-    Statement statement;
+    private static Connection conn;
+    private static Statement statement;
     
-    public DatabaseSetup() {
+    static {
         establishConnection();
         conn = getConnection();
         try {
@@ -37,12 +37,12 @@ public class DatabaseSetup {
         initializeDatabase();
     }
     
-    public Connection getConnection() {
-        return this.conn;
+    public static Connection getConnection() {
+        return conn;
     }
     
-    public void establishConnection() {
-        if (this.conn == null) {
+    private static void establishConnection() {
+        if (conn == null) {
             try {
                 conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
                 System.out.println(URL + " Connected Successfully...");
@@ -62,7 +62,7 @@ public class DatabaseSetup {
         }
     }
     
-    public void initializeDatabase() {
+    private static void initializeDatabase() {
         try {
             // Create pets table
             statement.addBatch("CREATE TABLE PETS (NAME VARCHAR(50) NOT NULL, TYPE VARCHAR(10) NOT NULL, HUNGER INT, ENERGY INT, FUN INT, HYGIENE INT, BLADDER INT, THIRST INT)");
@@ -80,7 +80,7 @@ public class DatabaseSetup {
         }
     }
     
-    public List<Animal> loadExistingPets() {
+    public static List<Animal> loadExistingPets() {
         List<Animal> pets = new ArrayList<>();
         try {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM PETS");
@@ -119,32 +119,7 @@ public class DatabaseSetup {
         return pets;
     }
 
-//    public void saveNewPet(Animal pet) {
-//        try (PreparedStatement statement = conn.prepareStatement("INSERT INTO PETS VALUES (?, ?, ?, ?, ?, ?, ?, ?)")) {
-//            statement.setString(1, pet.getName());
-//            
-//            // Check the type of the pet and set the appropriate type in the database
-//            if (pet instanceof Dog) {
-//                statement.setString(2, "Dog");
-//            } else if (pet instanceof Cat) {
-//                statement.setString(2, "Cat");
-//            } else {
-//                throw new IllegalArgumentException("Invalid pet type.");
-//            }
-//            
-//            statement.setInt(3, pet.getHunger());
-//            statement.setInt(4, pet.getEnergy());
-//            statement.setInt(5, pet.getFun());
-//            statement.setInt(6, pet.getHygiene());
-//            statement.setInt(7, pet.getBladder());
-//            statement.setInt(8, pet.getThirst());
-//            statement.executeUpdate();
-//        } catch (SQLException ex) {
-//            System.out.println(ex.getMessage());
-//        }
-//    }
-    
-    public void saveNewPet(Animal pet) {
+    public static void saveNewPet(Animal pet) {
     try {
         // Check if the pet with the given name already exists in the database
         ResultSet resultSet = statement.executeQuery("SELECT * FROM PETS WHERE NAME = '" + pet.getName() + "'");

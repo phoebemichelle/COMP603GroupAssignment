@@ -8,8 +8,8 @@ package virtualpetgame;
  *
  * @author phoeb
  */
-public class MainMenuGUI extends javax.swing.JFrame {
-
+public class MainMenuGUI extends javax.swing.JFrame {    
+    
     /**
      * Creates new form GameGUI
      */
@@ -61,6 +61,11 @@ public class MainMenuGUI extends javax.swing.JFrame {
         loadPet.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         loadPet.setForeground(new java.awt.Color(0, 0, 0));
         loadPet.setText("Load Existing Pet");
+        loadPet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loadPetActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(102, 0, 102));
@@ -154,7 +159,19 @@ public class MainMenuGUI extends javax.swing.JFrame {
 
     private void createNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createNewActionPerformed
         // TODO add your handling code here:
+        CreatePetGUI createPet = new CreatePetGUI();
+        createPet.show();
+        
+        dispose();
     }//GEN-LAST:event_createNewActionPerformed
+
+    private void loadPetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadPetActionPerformed
+        // TODO add your handling code here:
+        LoadPetGUI loadPet = new LoadPetGUI(DatabaseSetup.loadExistingPets());
+        loadPet.show();
+        
+        dispose();
+    }//GEN-LAST:event_loadPetActionPerformed
 
     /**
      * @param args the command line arguments

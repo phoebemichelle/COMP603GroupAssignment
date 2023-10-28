@@ -11,12 +11,6 @@
     public class GameplayManager {
         private Animal pet;
         private boolean continuePlaying;
-        private DatabaseSetup dbManager;
-        
-        //Constructor to pass the database from the main class
-        public GameplayManager(DatabaseSetup dbManager) {
-            this.dbManager = dbManager;
-        }
         
         public void setPet(Animal pet) {
             this.pet = pet;
@@ -142,7 +136,7 @@
         }
 
         private void handlePottyAction() {
-            if (pet.getBladder() > 50) {
+            if (pet.getBladder() > 40) {
                 System.out.println("Mmh, it seems like " + pet.getName() +
                         " does not need to potty right now.");
             } else {
@@ -151,7 +145,7 @@
         }
         
         private void savePetAndExit() {
-            dbManager.saveNewPet(pet); // Save the pet to the database using the existing dbManager object
+            DatabaseSetup.saveNewPet(pet); // Save the pet to the database using the existing dbManager object
             System.out.println("Pet saved successfully! Thank you for playing the game.");
             continuePlaying = false;
         }
